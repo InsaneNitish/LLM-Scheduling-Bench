@@ -1,0 +1,55 @@
+# LLM Scheduler Benchmark — Experiment Configurations
+# All experiments use virtual-time (simulated clock) mode.
+
+defaults:
+  seeds: [42, 123, 7]
+  warmup_requests: 10
+  total_requests: 200
+  max_output_tokens: 128
+  prompt_distribution: "bimodal"  # short: 10-50, long: 200-500, 80/20 mix
+  output_distribution: "fixed"
+  backend: "sim"
+
+experiments:
+  E1_load_sweep:
+    description: "Throughput and latency under increasing load"
+    policies: ["fcfs", "round_robin", "spf", "decode_first"]
+    variable: "arrival_rate"
+    values: [0.5, 1.0, 2.0, 4.0, 8.0]
+    prompt_distribution: "bimodal"
+    max_output_tokens: 128
+
+  E2_prompt_mix:
+    description: "Effect of prompt-length distribution on scheduling fairness"
+    policies: ["fcfs", "round_robin", "spf", "decode_first"]
+    arrival_rate: 2.0
+    variable: "prompt_distribution"
+    values: ["short", "long", "bimodal"]
+    max_output_tokens: 128
+
+  E3_output_length:
+    description: "Impact of output length on TPOT and E2E latency"
+    policies: ["fcfs", "round_robin", "spf", "decode_first"]
+    arrival_rate: 2.0
+    prompt_distribution: "bimodal"
+    variable: "max_output_tokens"
+    values: [32, 128, 512]
+
+  E4_rr_quantum:
+    description: "Round-Robin quantum sensitivity analysis"
+    policies: ["round_robin"]
+    arrival_rate: 2.0
+    prompt_distribution: "bimodal"
+    max_output_tokens: 128
+    variable: "rr_quantum"
+    values: [1, 4, 16, 64]
+
+  E5_burst_arrival:
+    description: "Burst arrival pattern stress test"
+    policies: ["fcfs", "round_robin", "spf", "decode_first"]
+    arrival_rate: 8.0
+    prompt_distribution: "bimodal"
+    max_output_tokens: 128
+    burst_mode: true
+    burst_size: 20
+    burst_interval: 5.0

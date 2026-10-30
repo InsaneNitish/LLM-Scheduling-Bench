@@ -1,0 +1,8 @@
+{
+    "_comment": "Simulated latency model constants. These are ASSUMED values, NOT calibrated against any real hardware.",
+    "_note": "prefill_time = a * num_tokens + b (seconds); decode_time = c per token (seconds)",
+    "prefill_a": 0.0005,
+    "prefill_b": 0.02,
+    "decode_c": 0.025,
+    "default_chunk_size": 64
+}

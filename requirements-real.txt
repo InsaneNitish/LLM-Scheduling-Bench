@@ -1,0 +1,6 @@
+# Dependencies for Real LLM Backend (Qwen2.5 on CPU)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.2+cpu
+transformers==4.40.2
+accelerate==0.29.3
+safetensors==0.4.3

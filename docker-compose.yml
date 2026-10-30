@@ -1,0 +1,100 @@
+# ============================================================
+# LLM Scheduler Bench — Docker Compose
+# ============================================================
+# Usage:
+#   docker compose up llm-server              # Start simulated API server
+#   docker compose --profile real up --build llm-server-real  # Start real LLM server
+#   docker compose --profile bench up         # Run benchmarks + analysis
+#   docker compose --profile test up          # Run unit tests
+# ============================================================
+
+services:
+  # Note: 'llm-server' (simulated) and 'llm-server-real' (real Qwen2.5) use the
+  # same host port (8000:8000), so only one server should be active at a time.
+  llm-server:
+    build: .
+    container_name: llm-scheduler-server
+    ports:
+      - "8000:8000"
+    environment:
+      - BACKEND=sim
+      - DEFAULT_POLICY=fcfs
+      - TIME_SCALE=1.0
+      - RR_QUANTUM=4
+      - CHUNK_SIZE=64
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; r = httpx.get('http://localhost:8000/health'); r.raise_for_status()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - ./results:/results
+    restart: unless-stopped
+
+  # Real LLM server: executes local Qwen2.5-0.5B-Instruct on CPU
+  llm-server-real:
+    build:
+      context: .
+      args:
+        INSTALL_REAL: "true"
+    container_name: llm-scheduler-server-real
+    profiles:
+      - real
+    ports:
+      - "8000:8000"
+    environment:
+      - BACKEND=real
+      - MODEL_PATH=/models/Qwen2.5-0.5B-Instruct
+      - DEFAULT_POLICY=fcfs
+      - RR_QUANTUM=4
+      - CHUNK_SIZE=64
+    volumes:
+      - ./models:/models:ro
+    mem_limit: 4g
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; r = httpx.get('http://localhost:8000/health'); r.raise_for_status()"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 120s
+    restart: unless-stopped
+
+  benchmark:
+    build: .
+    container_name: llm-scheduler-benchmark
+    profiles:
+      - bench
+    environment:
+      - BACKEND=sim
+      - RESULTS_DIR=/results
+      - CONFIGS_DIR=/app/configs
+    volumes:
+      - ./results:/results
+    command: ["python", "-m", "src.benchmark.run_benchmark", "--mode", "sim"]
+    depends_on:
+      llm-server:
+        condition: service_healthy
+
+  analysis:
+    build: .
+    container_name: llm-scheduler-analysis
+    profiles:
+      - bench
+    environment:
+      - RESULTS_DIR=/results
+      - PLOTS_DIR=/plots
+    volumes:
+      - ./results:/results
+      - ./plots:/plots
+    command: ["python", "-m", "src.benchmark.analyze", "--results-dir", "/results", "--plots-dir", "/plots"]
+    depends_on:
+      benchmark:
+        condition: service_completed_successfully
+
+  test:
+    build: .
+    container_name: llm-scheduler-tests
+    profiles:
+      - test
+    command: ["python", "-m", "pytest", "tests/", "-v", "--tb=short"]

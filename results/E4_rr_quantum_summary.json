@@ -1,0 +1,518 @@
+[
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.063,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2931,
+      "ttft": {
+        "mean": 3.3167,
+        "p50": 3.1087,
+        "p95": 5.5414,
+        "p99": 5.7766
+      },
+      "tpot": {
+        "mean": 4.7285,
+        "p50": 4.7803,
+        "p95": 4.8664,
+        "p99": 4.8674
+      },
+      "e2e_latency": {
+        "mean": 603.8311,
+        "p50": 610.6116,
+        "p95": 621.0575,
+        "p99": 621.2201
+      },
+      "waiting_time": {
+        "mean": 0.0283,
+        "p50": 0.0148,
+        "p95": 0.15,
+        "p99": 0.251
+      }
+    },
+    "rr_quantum": 1,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 1
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.065,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.294,
+      "ttft": {
+        "mean": 3.2332,
+        "p50": 3.3042,
+        "p95": 5.5354,
+        "p99": 5.8298
+      },
+      "tpot": {
+        "mean": 4.6947,
+        "p50": 4.7452,
+        "p95": 4.8395,
+        "p99": 4.8406
+      },
+      "e2e_latency": {
+        "mean": 599.4543,
+        "p50": 605.9222,
+        "p95": 617.6632,
+        "p99": 617.8902
+      },
+      "waiting_time": {
+        "mean": 0.0194,
+        "p50": 0.0137,
+        "p95": 0.0472,
+        "p99": 0.1615
+      }
+    },
+    "rr_quantum": 1,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 1
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.062,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2933,
+      "ttft": {
+        "mean": 3.3169,
+        "p50": 3.409,
+        "p95": 5.4279,
+        "p99": 5.4891
+      },
+      "tpot": {
+        "mean": 4.7138,
+        "p50": 4.764,
+        "p95": 4.8529,
+        "p99": 4.8547
+      },
+      "e2e_latency": {
+        "mean": 601.9742,
+        "p50": 607.609,
+        "p95": 619.3593,
+        "p99": 619.7221
+      },
+      "waiting_time": {
+        "mean": 0.0216,
+        "p50": 0.0124,
+        "p95": 0.0659,
+        "p99": 0.1876
+      }
+    },
+    "rr_quantum": 1,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 1
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.059,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2931,
+      "ttft": {
+        "mean": 12.6428,
+        "p50": 12.386,
+        "p95": 20.677,
+        "p99": 20.9159
+      },
+      "tpot": {
+        "mean": 4.6017,
+        "p50": 4.6538,
+        "p95": 4.753,
+        "p99": 4.7579
+      },
+      "e2e_latency": {
+        "mean": 597.061,
+        "p50": 604.961,
+        "p95": 615.0021,
+        "p99": 616.6248
+      },
+      "waiting_time": {
+        "mean": 0.0665,
+        "p50": 0.0574,
+        "p95": 0.1855,
+        "p99": 0.3015
+      }
+    },
+    "rr_quantum": 4,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 4
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.059,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.294,
+      "ttft": {
+        "mean": 12.3888,
+        "p50": 12.2682,
+        "p95": 20.8573,
+        "p99": 21.0965
+      },
+      "tpot": {
+        "mean": 4.5698,
+        "p50": 4.6227,
+        "p95": 4.7237,
+        "p99": 4.7244
+      },
+      "e2e_latency": {
+        "mean": 592.7474,
+        "p50": 602.0486,
+        "p95": 611.9627,
+        "p99": 612.2004
+      },
+      "waiting_time": {
+        "mean": 0.0552,
+        "p50": 0.0483,
+        "p95": 0.1096,
+        "p99": 0.1706
+      }
+    },
+    "rr_quantum": 4,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 4
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.051,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2933,
+      "ttft": {
+        "mean": 12.5903,
+        "p50": 12.8267,
+        "p95": 20.4731,
+        "p99": 20.9823
+      },
+      "tpot": {
+        "mean": 4.5884,
+        "p50": 4.6435,
+        "p95": 4.7346,
+        "p99": 4.7404
+      },
+      "e2e_latency": {
+        "mean": 595.3115,
+        "p50": 603.4207,
+        "p95": 613.8519,
+        "p99": 614.3308
+      },
+      "waiting_time": {
+        "mean": 0.0614,
+        "p50": 0.0575,
+        "p95": 0.1295,
+        "p99": 0.2378
+      }
+    },
+    "rr_quantum": 4,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 4
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.06,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2931,
+      "ttft": {
+        "mean": 47.6616,
+        "p50": 51.264,
+        "p95": 80.2908,
+        "p99": 82.7648
+      },
+      "tpot": {
+        "mean": 4.1056,
+        "p50": 4.1699,
+        "p95": 4.3018,
+        "p99": 4.3116
+      },
+      "e2e_latency": {
+        "mean": 569.071,
+        "p50": 590.7556,
+        "p95": 596.8164,
+        "p99": 598.3268
+      },
+      "waiting_time": {
+        "mean": 0.2175,
+        "p50": 0.2038,
+        "p95": 0.3864,
+        "p99": 0.5583
+      }
+    },
+    "rr_quantum": 16,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 16
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.055,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.294,
+      "ttft": {
+        "mean": 47.3986,
+        "p50": 50.2635,
+        "p95": 80.4573,
+        "p99": 82.9166
+      },
+      "tpot": {
+        "mean": 4.0798,
+        "p50": 4.1368,
+        "p95": 4.2833,
+        "p99": 4.2927
+      },
+      "e2e_latency": {
+        "mean": 565.5299,
+        "p50": 586.5533,
+        "p95": 594.4648,
+        "p99": 596.0658
+      },
+      "waiting_time": {
+        "mean": 0.2132,
+        "p50": 0.2284,
+        "p95": 0.3921,
+        "p99": 0.4437
+      }
+    },
+    "rr_quantum": 16,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 16
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.053,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2933,
+      "ttft": {
+        "mean": 47.5183,
+        "p50": 50.1192,
+        "p95": 79.9931,
+        "p99": 82.8843
+      },
+      "tpot": {
+        "mean": 4.0971,
+        "p50": 4.1698,
+        "p95": 4.29,
+        "p99": 4.3005
+      },
+      "e2e_latency": {
+        "mean": 567.852,
+        "p50": 589.5179,
+        "p95": 594.5716,
+        "p99": 595.1102
+      },
+      "waiting_time": {
+        "mean": 0.2134,
+        "p50": 0.2193,
+        "p95": 0.3848,
+        "p99": 0.4116
+      }
+    },
+    "rr_quantum": 16,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 16
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.065,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2931,
+      "ttft": {
+        "mean": 175.0828,
+        "p50": 176.664,
+        "p95": 306.8108,
+        "p99": 319.8337
+      },
+      "tpot": {
+        "mean": 2.2072,
+        "p50": 2.2864,
+        "p95": 2.5195,
+        "p99": 2.5447
+      },
+      "e2e_latency": {
+        "mean": 455.393,
+        "p50": 479.039,
+        "p95": 577.1058,
+        "p99": 587.0087
+      },
+      "waiting_time": {
+        "mean": 0.8255,
+        "p50": 0.7572,
+        "p95": 1.5069,
+        "p99": 1.7221
+      }
+    },
+    "rr_quantum": 64,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 64
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.052,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.294,
+      "ttft": {
+        "mean": 174.194,
+        "p50": 173.9857,
+        "p95": 308.1173,
+        "p99": 318.5246
+      },
+      "tpot": {
+        "mean": 2.183,
+        "p50": 2.2675,
+        "p95": 2.5195,
+        "p99": 2.5321
+      },
+      "e2e_latency": {
+        "mean": 451.4339,
+        "p50": 476.3607,
+        "p95": 575.2923,
+        "p99": 582.4996
+      },
+      "waiting_time": {
+        "mean": 0.8932,
+        "p50": 0.9241,
+        "p95": 1.5411,
+        "p99": 1.5964
+      }
+    },
+    "rr_quantum": 64,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 64
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 2.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.049,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2933,
+      "ttft": {
+        "mean": 173.799,
+        "p50": 174.5192,
+        "p95": 304.8931,
+        "p99": 317.6923
+      },
+      "tpot": {
+        "mean": 2.2075,
+        "p50": 2.2927,
+        "p95": 2.5195,
+        "p99": 2.5322
+      },
+      "e2e_latency": {
+        "mean": 454.148,
+        "p50": 475.2942,
+        "p95": 578.3881,
+        "p99": 586.4673
+      },
+      "waiting_time": {
+        "mean": 0.8854,
+        "p50": 0.9311,
+        "p95": 1.519,
+        "p99": 1.5849
+      }
+    },
+    "rr_quantum": 64,
+    "experiment": "E4_rr_quantum",
+    "variable": "rr_quantum",
+    "variable_value": 64
+  }
+]

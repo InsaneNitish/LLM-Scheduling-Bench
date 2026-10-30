@@ -1,0 +1,26 @@
+# Local model weights (keep .gitkeep and README.md)
+models/*
+!models/.gitkeep
+!models/README.md
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Dashboard dependencies & builds
+dashboard/node_modules/
+dashboard/dist/
+
+# Archives & temporary bundles
+*.zip
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# IDE configurations
+.idea/
+.vscode/

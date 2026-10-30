@@ -1,0 +1,506 @@
+[
+  {
+    "policy": "fcfs",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.051,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.291,
+      "ttft": {
+        "mean": 333.5294,
+        "p50": 333.2332,
+        "p95": 604.7634,
+        "p99": 627.6912
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 336.7044,
+        "p50": 336.4082,
+        "p95": 607.9384,
+        "p99": 630.8662
+      },
+      "waiting_time": {
+        "mean": 333.4309,
+        "p50": 333.1747,
+        "p95": 604.698,
+        "p99": 627.6342
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "fcfs",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.031,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2919,
+      "ttft": {
+        "mean": 332.2363,
+        "p50": 332.2605,
+        "p95": 602.6082,
+        "p99": 625.6053
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 335.4113,
+        "p50": 335.4355,
+        "p95": 605.7832,
+        "p99": 628.7803
+      },
+      "waiting_time": {
+        "mean": 332.1478,
+        "p50": 332.2057,
+        "p95": 602.5548,
+        "p99": 625.4032
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "fcfs",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.034,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.291,
+      "ttft": {
+        "mean": 333.9569,
+        "p50": 334.2723,
+        "p95": 605.0146,
+        "p99": 627.5537
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 337.1319,
+        "p50": 337.4473,
+        "p95": 608.1896,
+        "p99": 630.7287
+      },
+      "waiting_time": {
+        "mean": 333.8598,
+        "p50": 334.2098,
+        "p95": 604.9515,
+        "p99": 627.4978
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.052,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.291,
+      "ttft": {
+        "mean": 14.5483,
+        "p50": 17.1887,
+        "p95": 21.3102,
+        "p99": 21.6025
+      },
+      "tpot": {
+        "mean": 4.918,
+        "p50": 4.9396,
+        "p95": 5.0036,
+        "p99": 5.0036
+      },
+      "e2e_latency": {
+        "mean": 639.1385,
+        "p50": 643.1831,
+        "p95": 649.3215,
+        "p99": 650.0793
+      },
+      "waiting_time": {
+        "mean": 0.6709,
+        "p50": 0.5776,
+        "p95": 1.4768,
+        "p99": 1.7391
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.063,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2919,
+      "ttft": {
+        "mean": 14.0782,
+        "p50": 16.3557,
+        "p95": 21.3422,
+        "p99": 21.7095
+      },
+      "tpot": {
+        "mean": 4.897,
+        "p50": 4.9277,
+        "p95": 4.9867,
+        "p99": 4.9867
+      },
+      "e2e_latency": {
+        "mean": 636.0025,
+        "p50": 640.8102,
+        "p95": 647.2376,
+        "p99": 648.0003
+      },
+      "waiting_time": {
+        "mean": 0.6278,
+        "p50": 0.5766,
+        "p95": 1.368,
+        "p99": 1.7978
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "round_robin",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.056,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.291,
+      "ttft": {
+        "mean": 14.4491,
+        "p50": 16.9083,
+        "p95": 20.9911,
+        "p99": 21.3634
+      },
+      "tpot": {
+        "mean": 4.9209,
+        "p50": 4.942,
+        "p95": 4.997,
+        "p99": 4.997
+      },
+      "e2e_latency": {
+        "mean": 639.4024,
+        "p50": 643.6189,
+        "p95": 649.2913,
+        "p99": 650.0519
+      },
+      "waiting_time": {
+        "mean": 0.6898,
+        "p50": 0.6922,
+        "p95": 1.4575,
+        "p99": 1.64
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "spf",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.053,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.291,
+      "ttft": {
+        "mean": 330.0373,
+        "p50": 323.1153,
+        "p95": 625.0682,
+        "p99": 645.2508
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 333.2123,
+        "p50": 326.2903,
+        "p95": 628.2432,
+        "p99": 648.4258
+      },
+      "waiting_time": {
+        "mean": 329.9369,
+        "p50": 323.0546,
+        "p95": 624.797,
+        "p99": 644.9638
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "spf",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.042,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2919,
+      "ttft": {
+        "mean": 329.7904,
+        "p50": 323.4469,
+        "p95": 620.8933,
+        "p99": 644.561
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 332.9654,
+        "p50": 326.6219,
+        "p95": 624.0683,
+        "p99": 647.736
+      },
+      "waiting_time": {
+        "mean": 329.7004,
+        "p50": 323.3836,
+        "p95": 620.661,
+        "p99": 644.2894
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "spf",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.046,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.291,
+      "ttft": {
+        "mean": 330.2499,
+        "p50": 320.1157,
+        "p95": 627.6887,
+        "p99": 653.0231
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 333.4249,
+        "p50": 323.2907,
+        "p95": 630.8637,
+        "p99": 656.1981
+      },
+      "waiting_time": {
+        "mean": 330.1508,
+        "p50": 320.0552,
+        "p95": 627.4468,
+        "p99": 652.7529
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "decode_first",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 42,
+    "wall_time_seconds": 0.347,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2889,
+      "ttft": {
+        "mean": 336.1825,
+        "p50": 335.7132,
+        "p95": 609.4834,
+        "p99": 632.6712
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 339.3575,
+        "p50": 338.8882,
+        "p95": 612.6584,
+        "p99": 635.8462
+      },
+      "waiting_time": {
+        "mean": 336.0601,
+        "p50": 335.6547,
+        "p95": 609.418,
+        "p99": 632.6142
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "decode_first",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 123,
+    "wall_time_seconds": 0.324,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2903,
+      "ttft": {
+        "mean": 334.0989,
+        "p50": 334.1405,
+        "p95": 606.0482,
+        "p99": 629.3053
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 337.2739,
+        "p50": 337.3155,
+        "p95": 609.2232,
+        "p99": 632.4803
+      },
+      "waiting_time": {
+        "mean": 333.9925,
+        "p50": 334.0857,
+        "p95": 605.9948,
+        "p99": 629.024
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  },
+  {
+    "policy": "decode_first",
+    "arrival_rate": 8.0,
+    "prompt_distribution": "bimodal",
+    "output_distribution": "fixed",
+    "max_output_tokens": 128,
+    "total_requests": 200,
+    "warmup_requests": 10,
+    "seed": 7,
+    "wall_time_seconds": 0.305,
+    "summary": {
+      "count": 200,
+      "throughput_rps": 0.2889,
+      "ttft": {
+        "mean": 336.9146,
+        "p50": 337.4123,
+        "p95": 609.9546,
+        "p99": 632.4943
+      },
+      "tpot": {
+        "mean": 0.025,
+        "p50": 0.025,
+        "p95": 0.025,
+        "p99": 0.025
+      },
+      "e2e_latency": {
+        "mean": 340.0896,
+        "p50": 340.5873,
+        "p95": 613.1296,
+        "p99": 635.6693
+      },
+      "waiting_time": {
+        "mean": 336.7943,
+        "p50": 337.3498,
+        "p95": 609.8915,
+        "p99": 632.4378
+      }
+    },
+    "experiment": "E5_burst_arrival",
+    "variable": null,
+    "variable_value": null
+  }
+]
