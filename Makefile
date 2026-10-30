@@ -19,7 +19,7 @@ bench-sim:
 # Run analysis only (requires results to exist)
 analyze:
 	@mkdir -p plots
-	docker compose run --rm analysis
+	docker compose run --rm --no-deps analysis
 	@echo "Analysis complete. Plots in ./plots/"
 
 # Run unit tests

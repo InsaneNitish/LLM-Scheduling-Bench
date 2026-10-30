@@ -53,10 +53,10 @@ Req 1 TTFT achieved Req 2 TTFT achieved fast!
 ### 2.2 Key Performance Indicators (KPIs)
 
 In cloud-hosted LLM services, performance is characterized along five primary dimensions:
-- **Time-to-First-Token (TTFT):** The duration from request submission to the generation of the very first output token ($T_{\text{first\_token}} - T_{\text{arrival}}$). Crucial for perceived user responsiveness.
-- **Time-Per-Output-Token (TPOT):** The inter-token generation latency during decoding ($T_{\text{completion}} - T_{\text{first\_token}}) / (N_{\text{tokens}} - 1$). Crucial for smooth human reading speed (~20-50ms/token).
+- **Time-to-First-Token (TTFT):** The duration from request submission to the generation of the very first output token ($T_{\text{first token}} - T_{\text{arrival}}$). Crucial for perceived user responsiveness.
+- **Time-Per-Output-Token (TPOT):** The inter-token generation latency during decoding ($\dfrac{T_{\text{completion}} - T_{\text{first token}}}{N_{\text{tokens}} - 1}$). Crucial for smooth human reading speed (~20-50ms/token).
 - **End-to-End (E2E) Latency:** Total turnaround time ($T_{\text{completion}} - T_{\text{arrival}}$).
-- **Waiting Time:** Latency experienced in the ready queue before the engine executes the request's first prefill token ($T_{\text{prefill\_start}} - T_{\text{arrival}}$).
+- **Waiting Time:** Latency experienced in the ready queue before the engine executes the request's first prefill token ($T_{\text{prefill start}} - T_{\text{arrival}}$).
 - **Fairness:** The ratio of normalized turnaround times between short-prompt and long-prompt requests.
 
 ---
@@ -270,7 +270,7 @@ To evaluate scheduling policies under genuine inference conditions rather than s
 - **Metrics Collected:** Records Time-To-First-Token (TTFT), waiting time, and end-to-end (E2E) latency per request under each policy.
 - **Reporting:** The comparison table is saved to `results/real_concurrent_demo.md` and raw telemetry records to `results/real_concurrent_demo.json`.
 
-Measured results: paste the contents of results/real_concurrent_demo.md here after running the demo.
+Running `python scripts/concurrent_demo.py --compare` writes the comparison table to `results/real_concurrent_demo.md`; measured numbers depend on the host CPU.
 
 ---
 

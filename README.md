@@ -4,7 +4,14 @@ A Docker-based benchmarking and simulation system for evaluating iteration-level
 
 ## Repository
 
-Repository: <paste your GitHub URL here>
+Repository: https://github.com/InsaneNitish/LLM-Scheduling-Bench
+
+### Quick start
+
+```bash
+git clone https://github.com/InsaneNitish/LLM-Scheduling-Bench.git
+cd LLM-Scheduling-Bench
+```
 
 ---
 
@@ -14,6 +21,8 @@ LLM Scheduler Bench provides two distinct execution modes:
 
 1. **Simulated Mode (`BACKEND=sim`, default):** Uses a parametric latency model for high-speed discrete-event simulation. Evaluates tens of thousands of requests in seconds to conduct extensive multi-variable load sweeps, arrival distributions, and sensitivity analyses.
 2. **Real Mode (`BACKEND=real`):** Loads a real local language model (**Qwen2.5-0.5B-Instruct**) on CPU using Hugging Face Transformers (`torch.float32`, greedy decoding). Interacts live over HTTP REST, generating real textual completions token-by-token across concurrent requests and powering live curl demos.
+
+   **Performance note:** The real model runs on CPU in float32 and can be slow on laptops (roughly 0.5 to 20 tokens per second depending on CPU, power mode and free RAM); recommend max_tokens of 8 to 16 for demos; the client timeout is 300 s; in Docker give 4 to 6 GB RAM.
 
 ---
 
@@ -56,8 +65,8 @@ LLM Scheduler Bench provides two distinct execution modes:
 
 ## Metrics
 
-- **TTFT** — Time To First Token ($T_{\text{first\_token}} - T_{\text{arrival}}$)
-- **TPOT** — Time Per Output Token ($[T_{\text{completion}} - T_{\text{first\_token}}] / [N_{\text{tokens}} - 1]$)
+- **TTFT**: Time To First Token ($T_{\text{first token}} - T_{\text{arrival}}$)
+- **TPOT**: Time Per Output Token ($\dfrac{T_{\text{completion}} - T_{\text{first token}}}{N_{\text{tokens}} - 1}$)
 - **E2E Latency** — Total turnaround time ($T_{\text{completion}} - T_{\text{arrival}}$)
 - **Waiting Time** — Queue latency before first execution ($T_{\text{scheduled}} - T_{\text{arrival}}$)
 - **Throughput** — Completed requests per second
@@ -82,6 +91,23 @@ LLM Scheduler Bench provides two distinct execution modes:
     ```
 - **Disk Space:** ~1.2 GB for the local model weights in `./models/`.
 - **Python 3.10+** (if executing scripts or tests locally outside Docker).
+
+---
+
+## Host-side Python setup (only for scripts outside Docker)
+
+```bash
+python -m venv .venv
+# Activate virtual environment:
+source .venv/Scripts/activate          # Git Bash
+# or
+.venv\Scripts\Activate.ps1             # PowerShell
+
+# Install dependencies:
+pip install -r requirements.txt -r requirements-real.txt
+```
+
+Note that `scripts/check_model.py` needs `requirements-real.txt` and `scripts/concurrent_demo.py` needs `httpx` (included in `requirements.txt`).
 
 ---
 
@@ -215,18 +241,19 @@ curl -sS -X POST http://localhost:8000/generate \
   }'
 ```
 
-Sample Real Backend Response:
-```json
-{
-  "text": "An operating system scheduler allocates CPU time to active processes, ensuring responsive multitasking and balanced resource utilization.",
-  "ttft": 0.1824,
-  "waiting_time": 0.0012,
-  "e2e_latency": 1.4285,
-  "tokens": 48,
-  "policy": "round_robin",
-  "simulated": false
-}
-```
+#### Backend Response Fields
+
+| Field | Description |
+|---|---|
+| `text` | Generated text |
+| `ttft` | Seconds from arrival to first token |
+| `waiting_time` | Seconds before first scheduled |
+| `e2e_latency` | Seconds from arrival to finish |
+| `tokens` | Number of generated tokens |
+| `policy` | Active scheduling policy |
+| `simulated` | `false` for the real model, `true` for the simulator |
+
+*Note: Actual latency values depend on the hardware.*
 
 ### 4. Automated Demo Scripts
 
@@ -265,7 +292,7 @@ When evaluated with the live Qwen2.5-0.5B model on CPU inside Docker (`docker co
 - The multi-threaded client dispatches 1 long request and 3 short interactive requests concurrently under each policy and tracks TTFT, waiting time, and E2E latency.
 - The comparison table is written to `results/real_concurrent_demo.md` and raw telemetry to `results/real_concurrent_demo.json`.
 
-*Measured results: paste the contents of results/real_concurrent_demo.md here after running the demo.*
+Running `python scripts/concurrent_demo.py --compare` writes the table to `results/real_concurrent_demo.md`; those numbers depend on the CPU.
 
 ---
 
@@ -291,8 +318,9 @@ Results are saved to `./results/` (CSV & JSON), and generated charts are saved t
 ### Run Benchmark Analysis / Reproduce Graphs:
 
 ```bash
-docker compose run --rm analysis
+docker compose run --rm --no-deps analysis
 ```
+Without `--no-deps`, Compose would first re-run the benchmark service.
 
 Generated plots in `./plots/`:
 - `ttft_vs_load.png` — TTFT (mean & p99) vs arrival rate
@@ -305,16 +333,27 @@ Generated plots in `./plots/`:
 
 ---
 
+## Results summary
+
+- At 8.0 req/s mean TTFT is 345.4 s for FCFS and 16.2 s for Round Robin (about 95% lower).
+- Throughput is about 0.29 req/s for every policy.
+- Decode First behaves almost like FCFS in the simulator (347.9 s) because the simulator runs one request at a time.
+- Every E1 arrival rate exceeds the simulated capacity of about 0.29 req/s, so those TTFT values reflect queue growth over a 200-request run, not a steady state.
+
+---
+
 ## Interactive Web Dashboard
 
-To explore all benchmark results interactively:
+Requires Node.js 18+.
 
 ```powershell
 cd dashboard
 npm install
 npm run dev
 ```
-Open **`http://localhost:5173`** to access interactive Recharts visualizations.
+Open **`http://localhost:5173`** in your browser.
+
+The dashboard has the saved-benchmark tabs and a "Live (real-time)" tab that sends requests to the server through a Vite dev proxy (`/api` -> `http://localhost:8000`), so the API server must be running first and the proxy only exists in `npm run dev`.
 
 ---
 
@@ -333,8 +372,8 @@ This produces `../LLM_Scheduler_Bench_Submission.zip` with verified forward-slas
 
 ```
 Project/
-├── Dockerfile                    # Multi-stage Dockerfile (supports simulated & real backend)
-├── docker-compose.yml            # Compose configurations (llm-server, llm-server-real, bench)
+├── Dockerfile                    # Single-stage Dockerfile (INSTALL_REAL build arg selects sim or real image)
+├── docker-compose.yml            # Services: llm-server, llm-server-real, benchmark, analysis, test
 ├── Makefile                      # Make targets for build, test, and run
 ├── requirements.txt              # Core simulation dependencies (FastAPI, uvicorn, pytest, httpx, matplotlib)
 ├── requirements-real.txt         # Real backend ML dependencies (PyTorch CPU, Transformers)
@@ -389,6 +428,9 @@ Project/
 │   ├── project_report.md         # Full academic project report (IEEE/ACM style)
 │   └── analysis_report.md        # In-depth empirical benchmark findings report
 └── dashboard/                    # React + Vite interactive analytics dashboard
+    └── src/
+        ├── LiveTab.jsx
+        └── api.js
 ```
 
 ---
@@ -419,14 +461,21 @@ python -m pytest tests/ -v
 
 ---
 
+## Troubleshooting
+
+| Issue / Error | Solution |
+|---|---|
+| `failed to connect to the docker API ... dockerDesktopLinuxEngine` | Start Docker Desktop and wait for Engine running |
+| `port is already allocated` | Run `docker compose down` or stop the other server |
+| `Model directory not found` | Download into `models/Qwen2.5-0.5B-Instruct` |
+| Container killed in real mode | Raise Docker memory in `.wslconfig` |
+| Real model very slow | Plug in power, close other apps, use small `max_tokens` |
+| `running scripts is disabled` | Use `powershell -ExecutionPolicy Bypass -File` |
+
+---
+
 ## References
 
 1. **ORCA**: Yu et al., *"ORCA: A Distributed Serving System for Transformer-Based Generative Models,"* OSDI 2022.
 2. **SARATHI**: Agrawal et al., *"SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills,"* arXiv:2308.16369.
 3. **vLLM**: Kwon et al., *"Efficient Memory Management for Large Language Model Serving with PagedAttention,"* SOSP 2023.
-
----
-
-## License
-
-MIT
