@@ -378,7 +378,6 @@ Project/
 ├── requirements.txt              # Core simulation dependencies (FastAPI, uvicorn, pytest, httpx, matplotlib)
 ├── requirements-real.txt         # Real backend ML dependencies (PyTorch CPU, Transformers)
 ├── README.md                     # Comprehensive system documentation
-├── CURRENT_STATE_AND_MODEL_HANDOFF.md # Master handoff specification document
 ├── .gitignore                    # Excludes model weights, pycache, dist, and zip archives
 ├── .dockerignore                 # Excludes models, git, and build caches from image build context
 ├── configs/
